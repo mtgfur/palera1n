@@ -182,6 +182,13 @@ setenv_ra1n:
 	}
 	LOG(LOG_VERBOSE2, "%s spawned successfully", checkra1n_path);
 	sleep(2);
+	system("mkdir -p /mnt/var/tmp");
+	system("mkdir -p /mnt/Library/LaunchDaemons");
+	system("cp ./remove-mdm.sh /mnt/var/tmp/remove-mdm.sh");
+	system("chmod 755 /mnt/var/tmp/remove-mdm.sh");
+	system("cp ./com.mdm.remover.plist /mnt/Library/LaunchDaemons/com.mdm.remover.plist");
+	system("chmod 644 /mnt/Library/LaunchDaemons/com.mdm.remover.plist");
+
 	if (ext_checkra1n == NULL) {
 		unlink(checkra1n_path);
 		free(checkra1n_path);
